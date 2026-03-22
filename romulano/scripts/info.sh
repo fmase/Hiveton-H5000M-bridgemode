@@ -71,13 +71,17 @@ TX="$2"
 printf "🌐 ${C}${B}Quick Info${N}\n\n"
 printf "📛 ${B}Hostname:${N} ${G}%s${N}\n" "$HOST"
 printf "🕒 ${B}Data/Ora:${N} ${G}%s${N}\n" "$DATE"
-printf "⏱️ ${B}Uptime:${N} ${G}%s${N}\n" "$UP"
-printf "🌐 ${B}Rete:${N} ${G}%s${N} | ${G}%s${N} | ${G}%s${N}\n" "$W4" "$W6" "$L4"
+printf "⏱️  ${B}Uptime:${N} ${G}%s${N}\n" "$UP"
+if [ -n "$W6" ]; then
+  printf "🌐 ${B}Rete:${N} ${G}%s${N} | ${G}%s${N} | ${G}%s${N}\n" "$W4" "$W6" "$L4"
+else
+  printf "🌐 ${B}Rete:${N} ${G}%s${N} | ${G}%s${N}\n" "$W4" "$L4"
+fi
 printf "📥 ${B}RX:${N} ${G}%s GB${N} | 📤 ${B}TX:${N} ${G}%s GB${N}\n" "$RX" "$TX"
 
 ZT="$(zt_ip)"
 [ -n "$ZT" ] && printf "🟢 ${B}ZeroTier:${N} ${G}%s${N}\n" "$ZT"
-printf "🌡️ ${B}Temp CPU:${N} %s\n" "$(cpu_temp)"
+printf "🌡️  ${B}Temp CPU:${N} %s\n" "$(cpu_temp)"
 
 . /etc/os-release 2>/dev/null
 [ -n "$OPENWRT_RELEASE" ] && \

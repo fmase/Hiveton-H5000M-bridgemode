@@ -63,14 +63,14 @@ TX="$2"
 printf "🌐 ${C}${B}Quick Info${N}\n\n"
 printf "📛 ${B}Hostname:${N} ${G}%s${N}\n" "$HOST"
 printf "🕒 ${B}Data/Ora:${N} ${G}%s${N}\n" "$DATE"
-printf "⏱️ ${B}Uptime:${N} ${G}%s${N}\n" "$UP"
+printf "⏱️  ${B}Uptime:${N} ${G}%s${N}\n" "$UP"
 printf "🌐 ${B}LAN IP:${N} ${G}%s${N}\n" "$L4"
 printf "🔗 ${B}Gateway:${N} ${G}%s${N}\n" "$GW"
 printf "📥 ${B}RX:${N} ${G}%s GB${N} | 📤 ${B}TX:${N} ${G}%s GB${N}\n" "$RX" "$TX"
 
 ZT="$(zt_ip)"
 [ -n "$ZT" ] && printf "🟢 ${B}ZeroTier:${N} ${G}%s${N}\n" "$ZT"
-printf "🌡️ ${B}Temp CPU:${N} %s\n" "$(cpu_temp)"
+printf "🌡️  ${B}Temp CPU:${N} %s\n" "$(cpu_temp)"
 
 . /etc/os-release 2>/dev/null
 [ -n "$OPENWRT_RELEASE" ] && \
