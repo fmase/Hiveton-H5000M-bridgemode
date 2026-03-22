@@ -1,5 +1,7 @@
 # Setup AIRPI — Hiveton H5000M
 
+> 🇬🇧 [Read in English](setup-airpi.md)
+
 ## Firmware
 
 - **ImmortalWrt 24.10-SNAPSHOT** `r33349-a35c3c2753`
@@ -9,7 +11,7 @@
 
 ## Configurazione rete
 
-```
+```sh
 uci set network.@device[0].name='br-lan'
 uci set network.@device[0].type='bridge'
 uci set network.@device[0].ports='eth1 usb0'
@@ -24,7 +26,7 @@ uci commit network
 
 ## Configurazione DHCP
 
-```
+```sh
 uci set dhcp.lan.start='101'
 uci set dhcp.lan.limit='10'
 uci set dhcp.lan.leasetime='12h'
@@ -37,7 +39,7 @@ uci commit dhcp
 
 ## Configurazione WiFi 5GHz (WiFi 6 / HE80)
 
-```
+```sh
 uci set wireless.MT7992_1_2.channel='48'
 uci set wireless.MT7992_1_2.htmode='HE80'
 uci set wireless.MT7992_1_2.txpower='100'
@@ -61,7 +63,7 @@ opkg install openssh-sftp-server nano-full whois nmap vnstat bash \
 
 ## Pacchetti rimossi (cleanup ModemManager)
 
-Non necessari con firmware iamromulan + driver cdc_ether:
+Non necessari con firmware iamromulan + driver `cdc_ether`:
 
 ```sh
 opkg remove modemmanager luci-proto-modemmanager libmbim mbim-utils umbim \
@@ -74,12 +76,12 @@ opkg remove modemmanager luci-proto-modemmanager libmbim mbim-utils umbim \
 ## Performance / QoS
 
 ```sh
-# irqbalance
+# Abilita irqbalance
 uci set irqbalance.irqbalance.enabled=1
 uci commit irqbalance
 /etc/init.d/irqbalance start
 
-# Flow offloading — disabilitare se si usa bandix/eBPF
+# Disabilita flow offloading (obbligatorio per bandix/eBPF)
 uci set firewall.@defaults[0].flow_offloading='0'
 uci commit firewall
 /etc/init.d/firewall restart
@@ -87,19 +89,25 @@ uci commit firewall
 
 > **Nota:** `kmod-sched-cake` e SQM non sono disponibili per questa architettura.
 
-## Monitoring — bandix
+## Monitoraggio — bandix
 
-- Installa `bandix` (backend eBPF `aarch64_cortex-a53`) + `luci-app-bandix`
-- Interfaccia: `br-lan`
-- Porta: `8686`
-- Flow offloading deve essere **disabilitato** (prerequisito)
+[bandix](https://github.com/timsaya/openwrt-bandix) è un monitor del traffico di rete in tempo reale basato su **eBPF**. Mostra traffico per client, query DNS e connessioni attive direttamente in una interfaccia web — senza agent sui client.
+
+L'interfaccia LuCI è fornita da [luci-app-bandix](https://github.com/timsaya/luci-app-bandix).
+
+Installa entrambi i pacchetti, poi configura:
+
+- Interfaccia da monitorare: `br-lan`
+- Porta interfaccia web: `8686`
+- Il flow offloading deve essere **disabilitato** prima dell'installazione (vedi sezione Performance)
+
+> Crediti: [timsaya](https://github.com/timsaya)
 
 ## MOTD / Banner SSH
 
 Copiare gli script dalla cartella `airpi/scripts/`:
 
 ```sh
-# Sul router
 cp bannerwrt.sh /etc/bannerwrt.sh
 cp info.sh /etc/info.sh
 cp profile.d/airpi_motd.sh /etc/profile.d/airpi_motd.sh

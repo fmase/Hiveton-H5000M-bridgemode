@@ -1,5 +1,7 @@
 # Architettura di rete
 
+> 🇬🇧 [Read in English](architecture.md)
+
 ## Hardware
 
 | Dispositivo | Ruolo |

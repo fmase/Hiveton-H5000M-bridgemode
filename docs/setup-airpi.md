@@ -91,10 +91,17 @@ uci commit firewall
 
 ## Monitoring — bandix
 
-- Install `bandix` (eBPF backend `aarch64_cortex-a53`) + `luci-app-bandix`
+[bandix](https://github.com/timsaya/openwrt-bandix) is a real-time network traffic monitor based on **eBPF**. It shows per-client traffic, DNS queries and active connections directly in a web UI — no agent required on clients.
+
+The LuCI interface is provided by [luci-app-bandix](https://github.com/timsaya/luci-app-bandix).
+
+Install both packages, then configure:
+
 - Monitor interface: `br-lan`
 - Web UI port: `8686`
-- Flow offloading must be **disabled** (prerequisite)
+- Flow offloading must be **disabled** before installing (see Performance section above)
+
+> Credit: [timsaya](https://github.com/timsaya)
 
 ## MOTD / SSH Banner
 

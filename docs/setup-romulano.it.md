@@ -1,5 +1,7 @@
 # Setup ROMULANO — Quectel RM551E-GL
 
+> 🇬🇧 [Read in English](setup-romulano.md)
+
 ## Firmware
 
 - **iamromulan custom firmware** — OpenWrt 23.05.4 `r24012-d8dd03c46f`
@@ -60,7 +62,7 @@ Questa guida è specifica per il **Quectel RM551E-GL**, ma lo stesso setup si ap
 
 ## Note operative
 
-- I disconnect LTE periodici (~4h) sono normali nel mio caso — uso una SIM WindTre e il provider rinegozia l'IP ogni ~4 ore
+- Le disconnessioni LTE periodiche (~4h) sono normali nel mio caso — uso una SIM WindTre e il provider rinegozia l'IP ogni ~4 ore
 - ZeroTier spesso non raggiungibile via rete pubblica — preferire accesso LAN
 - Connessione verificata su Quectel RM551E-GL: LTE B20 (PCC) + NR5G B78 (SCC) in NSA EN-DC
 
