@@ -53,8 +53,14 @@ The result is a flat network where the 5G module acts as the internet gateway fo
 - Custom MOTD on both devices (tricolor ASCII banner + quick info)
 - ZeroTier for remote access
 
+## Compatibility
+
+Although this setup was tested with the **Quectel RM551E-GL**, it can be reproduced with any module supported by [iamromulan](https://github.com/iamromulan)'s custom firmware. The iamromulan project provides OpenWrt-based firmware for several Quectel modules — check his GitHub for the full list of supported devices.
+
+> Full credit for the module firmware goes to **[iamromulan](https://github.com/iamromulan)** — without his work this setup would not be possible.
+
 ## Notes
 
-- Periodic LTE disconnects (~4h) are normal — SIM renegotiates IP
+- Periodic LTE disconnects (~4h) are normal in my case — I use a WindTre SIM and the carrier renegotiates the IP every ~4 hours
 - SQM/cake cannot be installed on either device (kmod unavailable for these architectures)
-- AT commands on the module: use `atinout` on `/dev/pts/1` (socat PTY bridge)
+- AT commands on the Quectel RM551E-GL module: use `atinout` on `/dev/pts/1` (socat PTY bridge)

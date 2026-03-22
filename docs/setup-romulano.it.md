@@ -54,11 +54,15 @@ atinout - /dev/pts/1 -
 - `kmod-sched-cake` e `fq_codel` non installabili
 - SQM impossibile su questo firmware
 
+## Nota sulla compatibilità
+
+Questa guida è specifica per il **Quectel RM551E-GL**, ma lo stesso setup si applica a tutti i moduli supportati dal firmware custom di [iamromulan](https://github.com/iamromulan). Controlla il suo GitHub per la lista completa dei moduli Quectel supportati.
+
 ## Note operative
 
-- La SIM può rinegoziare l'IP ogni ~4 ore — i disconnect nel log sono normali
+- I disconnect LTE periodici (~4h) sono normali nel mio caso — uso una SIM WindTre e il provider rinegozia l'IP ogni ~4 ore
 - ZeroTier spesso non raggiungibile via rete pubblica — preferire accesso LAN
-- Connessione verificata: LTE B20 (PCC) + NR5G B78 (SCC) in NSA EN-DC
+- Connessione verificata su Quectel RM551E-GL: LTE B20 (PCC) + NR5G B78 (SCC) in NSA EN-DC
 
 ## MOTD / Banner SSH
 
