@@ -7,7 +7,7 @@
 | Device | Role |
 |---|---|
 | **Hiveton H5000M** (MediaTek MT7992, 4-core ARMv8) | OpenWrt router — bridge + WiFi AP |
-| **Quectel RM551E-GL** (iamromulan firmware) | 5G module — internet gateway + DHCP server |
+| **Quectel RM551E-GL** ([iamromulan](https://github.com/iamromulan) firmware) | 5G module — internet gateway + DHCP server |
 
 ## Network diagram
 
@@ -48,4 +48,10 @@ DHCP is handled by the H5000M (dnsmasq, `authoritative=1`), with DHCP option 3 p
 
 ## Driver note
 
-The RM551E-GL with iamromulan firmware uses `cdc_ether` (USB CDC Ethernet). QMI/MBIM drivers are not needed and can be safely removed from ImmortalWrt to free space and simplify the setup.
+The Quectel RM551E-GL with [iamromulan](https://github.com/iamromulan) firmware uses `cdc_ether` (USB CDC Ethernet). QMI/MBIM drivers are not needed and can be safely removed from ImmortalWrt to free space and simplify the setup.
+
+## Monitoring
+
+Traffic monitoring is handled by [bandix](https://github.com/timsaya/openwrt-bandix) (eBPF-based) with [luci-app-bandix](https://github.com/timsaya/luci-app-bandix) for the LuCI web interface. Flow offloading must be disabled for bandix to work correctly.
+
+> Credit: [timsaya](https://github.com/timsaya)

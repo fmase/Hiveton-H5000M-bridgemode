@@ -17,7 +17,7 @@ Il modulo è raggiungibile via SSH sulla porta standard quando connesso via USB 
 
 ## Pacchetti da rimuovere subito dopo il flash
 
-Il firmware iamromulan include bandix pre-installato (circa 276 MB VSZ). Va rimosso per liberare RAM:
+Il firmware [iamromulan](https://github.com/iamromulan) include [bandix](https://github.com/timsaya/openwrt-bandix) (di [timsaya](https://github.com/timsaya)) pre-installato (~276 MB VSZ). Va rimosso per liberare RAM sul Quectel RM551E-GL — è più utile installarlo sul lato router H5000M:
 
 ```sh
 # Rimuovi bandix

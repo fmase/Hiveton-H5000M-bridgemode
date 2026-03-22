@@ -17,7 +17,7 @@ The module is reachable via SSH when connected via USB to the H5000M router (gat
 
 ## Packages to remove after flashing
 
-The iamromulan firmware ships with bandix pre-installed (~276 MB VSZ). Remove it to free RAM:
+The [iamromulan](https://github.com/iamromulan) firmware ships with [bandix](https://github.com/timsaya/openwrt-bandix) (by [timsaya](https://github.com/timsaya)) pre-installed (~276 MB VSZ). Remove it to free RAM on the Quectel RM551E-GL — it is better used on the H5000M router side:
 
 ```sh
 # Remove bandix
