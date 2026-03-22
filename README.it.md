@@ -11,6 +11,24 @@ Configurazione documentata di un router **Hiveton H5000M** con **ImmortalWrt 24.
 | **Hiveton H5000M** | Router WiFi 6, MediaTek MT7992, ARMv8 quad-core |
 | **Quectel RM551E-GL** | Modulo 5G SA/NSA, firmware iamromulan (OpenWrt 23.05.4) |
 
+<p align="center">
+  <img src="images/AIRPI-1.jpg" width="45%" alt="Hiveton H5000M"/>
+  <img src="images/ROMULANO-1.jpg" width="45%" alt="Quectel RM551E-GL"/>
+</p>
+<p align="center">
+  <em>Hiveton H5000M (sinistra) — Quectel RM551E-GL con cavi antenna (destra)</em>
+</p>
+
+### Interno
+
+<p align="center">
+  <img src="images/AIRPI-3.jpg" width="45%" alt="PCB H5000M"/>
+  <img src="images/AIRPI-4.jpg" width="45%" alt="Interno H5000M con RM551"/>
+</p>
+<p align="center">
+  <em>PCB H5000M (sinistra) — modulo RM551E-GL installato all'interno dell'H5000M (destra)</em>
+</p>
+
 ## Idea di base
 
 Il modulo Quectel RM551E-GL è connesso al router H5000M via USB. Grazie al driver `cdc_ether`, il modulo appare come interfaccia Ethernet (`usb0`) e viene incluso nel bridge `br-lan` insieme alla porta LAN fisica (`eth1`) e alla radio WiFi 5GHz (`rai0`).
